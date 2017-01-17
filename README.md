@@ -6,7 +6,7 @@ A docker container to compile the lastest version of Netatalk in order to run a 
 To download the docker container and execute it, simply run:
 
 ```
-$ docker run -h timemachine --name timemachine --restart=unless-stopped -d -v /route/to/your/timemachine:/timemachine -it -p 548:548 -p 636:636 odarriba/timemachine
+$ docker run -h timemachine --name timemachine --restart=unless-stopped -d -v /shares:/shares -it -p 548:548 -p 636:636 scrapes/docker-timemachine
 ```
 
 To add users, just run this command:
@@ -22,8 +22,8 @@ $ docker exec timemachine add-share USERNAME MOUNT_POINT [VOL_SIZE_MB]
 ```
 
 But take care that:
-* `MOUNT_POINT` should be an absolute path, preferably inside `/timemachine`, so it will be stored in your external volume.
-* `VOL_SIZE_MB` is an optional parameter. It indicates the max volume size for that user.
+* `MOUNT_POINT` shouldn´t be an absolute path, it will create an new directory inside your storage(shares) folder.
+* `VOL_SIZE_MB` is an optional parameter. It indicates the max volume size for that user, as long as the Time Machine flag is used.
 
 Now you have a docker instance running `netatalk`.
 
