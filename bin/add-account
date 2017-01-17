@@ -27,4 +27,5 @@ if [[ $# -eq 6 ]]; then
     vol size limit = ${6}" >> /etc/afp.conf
 fi
 
+chmod +x /usr/bin/add-share
 pkill -HUP afpd
