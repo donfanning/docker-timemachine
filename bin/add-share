@@ -8,9 +8,13 @@ if [[ $# -lt 2 ]]; then
 fi
 
 
-# Create mountpoint
-mkdir -p $2
-chown -R $1:root $2
+if [ -d "$2" ]; then 
+  
+else
+  # Create mountpoint
+  mkdir -p $2
+  chown -R $1:root $2
+fi
 
 # Add config to timemachine
   echo "
