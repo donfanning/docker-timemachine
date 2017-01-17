@@ -13,7 +13,7 @@ echo $1:$2 | chpasswd
 
 # Create mountpoint
 mkdir -p /shares/$3
-chown -R $1:root /shares/$3
+chown -R $1:afpuser /shares/$3
 
 # Add config to timemachine
   echo "
