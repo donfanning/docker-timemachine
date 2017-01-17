@@ -9,11 +9,13 @@ fi
 
 
 # Create mountpoint
+echo "creating mountpoint"
 mkdir -p /shares/$2
 chown -R :afpuser /shares/$2
 chmod g=rw :afpuser /shares/$2
 
 # Add config to timemachine
+echo "adding to configuration"
   echo "
 [${3}]
     path = /shares/${3}
@@ -25,4 +27,6 @@ if [[ $# -eq 5 ]]; then
     vol size limit = ${5}" >> /etc/afp.conf
 fi
 
+echo "done, restarting AFP server..."
 pkill -HUP afpd
+echo "restarted!"
