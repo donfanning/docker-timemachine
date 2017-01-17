@@ -12,14 +12,14 @@ if [ -d "$2" ]; then
   
 else
   # Create mountpoint
-  mkdir -p $2
-  chown -R $1:root $2
+  mkdir -p /shares/$2
+  chown -R $1:root /shares/$2
 fi
 
 # Add config to timemachine
   echo "
 [${1}]
-    path = ${2}
+    path = /shares/${2}
     time machine = yes
     valid users = ${1}" >> /etc/afp.conf
 
