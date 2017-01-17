@@ -12,13 +12,13 @@ adduser -S -H -G root $1
 echo $1:$2 | chpasswd
 
 # Create mountpoint
-mkdir -p $3
-chown -R $1:root $3
+mkdir -p /shares/$3
+chown -R $1:root /shares/$3
 
 # Add config to timemachine
   echo "
 [${1}]
-    path = ${3}
+    path = /shares/${3}
     time machine = yes
     valid users = ${1}" >> /etc/afp.conf
 
