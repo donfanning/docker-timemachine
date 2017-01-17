@@ -10,7 +10,7 @@ fi
 
 # Create mountpoint
 mkdir -p /shares/$2
-chown -R $1:root /shares/$2
+chown -R :afpuser /shares/$2
 
 # Add config to timemachine
   echo "
