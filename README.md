@@ -15,6 +15,12 @@ To add users, just run this command:
 $ docker exec timemachine add-account USERNAME PASSWORD MOUNT_POINT [VOL_SIZE_MB]
 ```
 
+To add a user to a share or create a new share:
+
+```
+$ docker exec timemachine add-share USERNAME MOUNT_POINT [VOL_SIZE_MB]
+```
+
 But take care that:
 * `MOUNT_POINT` should be an absolute path, preferably inside `/timemachine`, so it will be stored in your external volume.
 * `VOL_SIZE_MB` is an optional parameter. It indicates the max volume size for that user.
