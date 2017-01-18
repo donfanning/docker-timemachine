@@ -11,7 +11,7 @@ fi
 # Create mountpoint
 echo "creating mountpoint"
 mkdir -p /shares/$2
-chown -R :afpuser /shares/$2
+chown -R :root /shares/$2
 chmod g=rw /shares/$2
 
 # Add config to timemachine
