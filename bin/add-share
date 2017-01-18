@@ -18,7 +18,7 @@ chmod g=rw /shares/$2
 echo "adding to configuration"
   echo "
 [${3}]
-    path = /shares/${3}
+    path = /shares/${2}
     time machine = ${4}
     valid users = ${1}" >> /etc/afp.conf
 
