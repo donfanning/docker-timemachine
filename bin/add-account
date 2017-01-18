@@ -7,27 +7,16 @@ if [[ $# -lt 5 ]]; then
   exit 1
 fi
 
-if [ $(getent group afpuser) ]; then
-  echo "group afpuser already exsist."
-else
-  echo "group afpuser does not exist."
-  echo "creating group..."
-  if [ !$(addgroup afpuser) ]; then
-    echo "group created."
-  else
-    echo "couldnt create group."
-    exit 1
-  fi
-fi
+
 # Add the user
 echo "adding user [${1}]"
-adduser -S -H -G afpuser $1
+adduser -S -H -G root $1
 echo $1:$2 | chpasswd
 
 # Create mountpoint
 echo "creating mountpoint [${3}] with name [${4}]"
 mkdir -p /shares/$3
-chown -R $1:afpuser /shares/$3
+chown -R $1:root /shares/$3
 
 # Add config to timemachine
   echo "
