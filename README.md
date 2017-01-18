@@ -13,12 +13,18 @@ To add users, just run this command:
 
 ```
 $ docker exec timemachine add-account USERNAME PASSWORD MOUNT_POINT SHARE_NAME TIMEMACHINE(yes,no) [VOL_SIZE_MB]
+
+```
+Just to add a user without a share:
+
+```
+$ docker exec timemachine add-account USERNAME PASSWORD [MOUNT_POINT SHARE_NAME TIMEMACHINE(yes,no) [VOL_SIZE_MB]]
 ```
 
 To add a user to a share or create a new share:
 
 ```
-$ docker exec timemachine add-share USERNAME MOUNT_POINT [VOL_SIZE_MB]
+$ docker exec timemachine add-share VALID_USERS(user1,user2 ...) MOUNT_POINT SHARE_NAME TIMEMACHINE(yes,no) [VOL_SIZE_MB]
 ```
 
 But take care that:
