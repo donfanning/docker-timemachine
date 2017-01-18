@@ -12,7 +12,7 @@ $ docker run -h timemachine --name timemachine --restart=unless-stopped -d -v /s
 To add users, just run this command:
 
 ```
-$ docker exec timemachine add-account USERNAME PASSWORD MOUNT_POINT [VOL_SIZE_MB]
+$ docker exec timemachine add-account USERNAME PASSWORD MOUNT_POINT SHARE_NAME TIMEMACHINE(yes,no) [VOL_SIZE_MB]
 ```
 
 To add a user to a share or create a new share:
