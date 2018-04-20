@@ -3,7 +3,7 @@
 set -e
 
 if [[ $# -lt 2 ]]; then
-  echo "Usage: add-account USERNAME PASSWORD [MOUNT_POINT SHARE_NAME TIMEMACHINE(yes,no)] [VOL_SIZE_MB]"
+  echo "Usage: add-account USERNAME PASSWORD"
   exit 1
 fi
 
@@ -13,28 +13,6 @@ echo "adding user [${1}]"
 adduser -S -H -G root $1
 echo $1:$2 | chpasswd
 
-if [[ $# -lt 5 ]]; then
-  # Create mountpoint
-  echo "creating mountpoint [${3}] with name [${4}]"
-  mkdir -p /shares/$3
-  chown -R $1:root /shares/$3
-
-  # Add config to timemachine
-    echo "
-  [${1}-${4}]
-      path = /shares/${3}
-      time machine = ${5}
-      valid users = ${1}" >> /etc/afp.conf
-
-  if [[ $# -eq 6 ]]; then
-    echo "
-      vol size limit = ${6}" >> /etc/afp.conf
-  fi
-
-  echo "done creating mountpoint and user"
-  #to be fixed
-  chmod +x /usr/bin/add-share
-fi
 echo "restarting AFP service..."
 pkill -HUP afpd
 echo "restarted!"
