@@ -67,8 +67,7 @@ RUN apk update && \
     apk del .build-deps
 
 
-RUN mkdir -p /shares && \
-    mkdir -p /var/log/supervisor
+RUN mkdir -p /var/log/supervisor
 
 # Create the log file
 RUN touch /var/log/afpd.log
@@ -76,10 +75,10 @@ RUN touch /var/log/afpd.log
 ADD entrypoint.sh /entrypoint.sh
 ADD bin/add-account /usr/bin/add-account
 ADD bin/add-share /usr/bin/add-share
+RUN chmod 555 /usr/bin/add-account
+RUN chmod 555 /usr/bin/add-share
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 548 636
-
-VOLUME ["/shares"]
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
