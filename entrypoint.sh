@@ -4,13 +4,13 @@ set -e
 
 mkdir -p /conf.d/netatalk
 
-if [ ! -e /etc/afp.conf ]; then
-    echo "[Global]
-    mimic model = Xserve
-    log file = /var/log/afpd.log
-    log level = default:warn
-    zeroconf = no" >> /etc/afp.conf
-fi
+rm -rf /etc/afp.conf
+
+echo "[Global]
+mimic model = Xserve
+log file = /var/log/afpd.log
+log level = default:warn
+zeroconf = no" >> /etc/afp.conf
 
 if [ ! -e /.initialized ] && [ ! -z $AFP_LOGIN ] && [ ! -z $AFP_PASSWORD ]; then
     add-account $AFP_LOGIN $AFP_PASSWORD
